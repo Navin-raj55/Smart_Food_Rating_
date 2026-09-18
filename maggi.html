@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+.name-color {
+            color: blue;
+            font-size: 16px;
+        }
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.profile-info p {
+    font-size: 20px;
+}
+
+.profile-info span {
+    font-weight: bold;
+}
+
+.signout-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.product-info {
+    text-align: left;
+}
+
+.product-name {
+    font-size: 32px;    
+    color: red;
+    margin-bottom: 20px;
+}
+
+.product-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.ingredients {
+    width: 60%;
+}
+
+.ingredients ul {
+    list-style-type: none;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.product-image img {
+    width: 190px;
+    height: 250px;
+}
+
+.summary, .rating, .overall-rating {
+    margin-bottom: 20px;
+}
+
+.summary h2, .rating h2, .overall-rating h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.summary p, .rating p, .overall-rating p {
+    font-size: 16px;
+    color: #333;
+}
+
+.rating p {
+    margin-bottom: 10px;
+}
+
+.overall-rating p {
+    font-weight: bold;
+    color: green;
+    font-size: 18px;
+}
+
+.back-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .product-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-image img {
+        width: 120px;
+        height: 200px;
+    }
+
+    .ingredients {
+        width: 100%;
+    }
+
+    .back-btn {
+        width: 100%;
+    }
+}
+
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maggi Product Info</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="profile-info">
+                <img src="./assert/user-profile.png" alt="Profile Picture" class="profile-pic">
+                <p><span class="name-color" id="user-name">SMART FOOD RATING</span></p>
+            </div>
+            <button class="signout-btn" onclick="redirectToLogin()">Sign Out</button>
+        </header>
+        
+        <div class="product-info">
+            <h1 class="product-name" id="product-name">Product Name</h1>
+            <div class="product-content">
+                <div class="ingredients" id="product-ingredients">
+                    <!-- Ingredients will be injected here -->
+                </div>
+                <div class="product-image">
+                    <img id="product-img" src="" alt="Product Image">
+                </div>
+            </div>
+
+            <div class="summary" id="product-summary">
+                <!-- Summary will be injected here -->
+            </div>
+
+            <div class="rating" id="product-rating">
+                <!-- Ratings will be injected here -->
+            </div>
+
+            <div class="overall-rating" id="product-overall-rating">
+                <!-- Overall Rating will be injected here -->
+            </div>
+        </div>
+
+        <button class="back-btn" onclick="redirectToHome()">Back to Home</button>
+    </div>
+
+    <script>
+        // Function to get query parameters from the URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Fetch the JSON file and load product data
+        async function loadProductData() {
+            try {
+                // Fetch the JSON file containing the product data
+                const response = await fetch('products.json');
+                const products = await response.json();
+
+                // Get the product ID from the query string
+                const productId = getQueryParam('id');
+                console.log
+                const product = products[productId];
+
+                if (product) {
+                    // Update the DOM elements with product information
+                    document.getElementById('product-name').textContent = product.name;
+                    document.getElementById('product-img').src = product.img_path;
+
+                    // Populate ingredients list
+                    const ingredientsList = product.ingredients.map(item => `<li>${item}</li>`).join('');
+                    document.getElementById('product-ingredients').innerHTML = `<h2>Ingredients:</h2><ul>${ingredientsList}</ul>`;
+
+                    // Update summary
+                    document.getElementById('product-summary').innerHTML = `<h2>Summary:</h2><p>${product.summary}</p>`;
+
+                    // Update rating
+                    const ratingHtml = `
+                        <h2>Rating:</h2>
+                        <p><strong>Nutritional Value:</strong> ${product.rating["Nutritional Value"]}</p>
+                        <p><strong>Health Impact:</strong> ${product.rating["Health Impact"]}</p>
+                        <p><strong>Taste:</strong> ${product.rating["Taste"]}</p>
+                        <p><strong>Ingredients Transparency:</strong> ${product.rating["Ingredients Transparency"]}</p>`;
+                    document.getElementById('product-rating').innerHTML = ratingHtml;
+
+                    // Update overall rating
+                    document.getElementById('product-overall-rating').innerHTML = `<p><strong>Overall Rating:</strong> ${product.overall_rating}</p>`;
+                } else {
+                    // If product not found, show an error or redirect to a 404 page
+                    document.getElementById('product-name').textContent = "Product Not Found";
+                    document.getElementById('product-summary').innerHTML = `<p>Sorry, we couldn't find the product you're looking for.</p>`;
+                }
+            } catch (error) {
+                console.error('Error fetching product data:', error);
+            }
+        }
+
+        // Call the function to populate product info on page load
+        window.onload = loadProductData;
+
+        function redirectToHome() {
+            window.location.href = 'landingpage.php'; // Redirect to landing page
+        }
+
+        function redirectToLogin() {
+            window.location.href = 'loginacc.html'; // Redirect to login page
+        }
+    </script>
+</body>
+</html>

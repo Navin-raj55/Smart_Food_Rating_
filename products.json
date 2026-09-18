@@ -1,0 +1,117 @@
+{
+    "1234567890128": {
+      "name": "Maggi",
+      "img_path": "./assert/maggi-1-1000x1000.png",
+      "summary": "Maggi contains carbohydrates, fats, and proteins, offering quick energy. However, it is high in sodium, artificial flavors, and MSG, which may contribute to poor nutrition if consumed frequently.",
+      "ingredients": [
+        "Wheat Flour (Maida): The main ingredient of the noodles.",
+        "Edible Vegetable Oil: Used to fry the noodles.",
+        "Salt: For flavor and seasoning.",
+        "Hydrolyzed Groundnut Protein: A flavor enhancer.",
+        "Spices and Condiments: Includes turmeric, garlic, pepper, etc.",
+        "Preservatives: To ensure shelf life.",
+        "Artificial Colors and Flavors: Used for consistency in taste and appearance."
+      ],
+      "rating": {
+        "Nutritional Value": "4/10",
+        "Health Impact": "3/10",
+        "Taste": "8/10",
+        "Ingredients Transparency": "5/10"
+      },
+      "overall_rating": "3.5/5"
+    },
+    
+
+      "3017620422003": {
+        "name": "Nutella",
+        "img_path": "./assert/NUTELLA.png",
+        "summary": "Nutella is a popular chocolate hazelnut spread, rich in sugar and fats, making it a high-calorie product. While it provides quick energy, it is low in essential nutrients and may contribute to weight gain if consumed in large amounts.",
+        "ingredients": [
+          "Sugar: The primary ingredient, contributing to its sweetness.",
+          "Palm Oil: Provides the creamy texture and fat content.",
+          "Hazelnuts: Adds flavor and some nutritional value.",
+          "Cocoa Solids: Gives the chocolate taste.",
+          "Skimmed Milk Powder: Adds dairy flavor and mild protein.",
+          "Soy Lecithin: Used as an emulsifier to maintain consistency.",
+          "Vanillin: An artificial flavor used for sweetness."
+        ],
+        "rating": {
+          "Nutritional Value": "3/10",
+          "Health Impact": "4/10",
+          "Taste": "9/10",
+          "Ingredients Transparency": "6/10"
+        },
+        "overall_rating": "3.8/5"
+      },
+
+      "8906073830136": {
+        "name": "Avis Soya Sticks",
+        "img_path": "./assert/avis.png",
+        "summary": "Avis Soya Sticks are a crunchy snack made from soy flour, offering a higher protein content compared to regular chips. However, they are fried in oil and contain added salt, making them a less healthy option if consumed in large quantities.",
+        "ingredients": [
+          "Soy Flour: The main ingredient, providing protein.",
+          "Edible Vegetable Oil: Used for frying the sticks.",
+          "Salt: Added for flavor.",
+          "Spices and Seasonings: Includes chili powder, garlic, and other flavorings.",
+          "Corn Starch: Used to give the sticks a crispy texture.",
+          "Preservatives: Added to extend shelf life."
+        ],
+        "rating": {
+          "Nutritional Value": "8/10",
+          "Health Impact": "7/10",
+          "Taste": "7/10",
+          "Ingredients Transparency": "8/10"
+        },
+        "overall_rating": "4.2/5"
+      },
+
+      "8902433000416": {
+      "name": "Snickers Almond",
+      "img_path": "./assert/snickers.jpeg",
+      "summary": "Snickers Almond is a candy bar that combines almonds, caramel, and nougat, coated in milk chocolate. It offers a quick energy boost due to its high sugar content but may not be ideal for regular consumption due to the presence of added sugars and fats.",
+      "ingredients": [
+        "Milk Chocolate: Contains sugar, cocoa butter, chocolate, skim milk, and lactose.",
+        "Almonds: Provides crunch and adds healthy fats.",
+        "Corn Syrup: Used as a sweetener.",
+        "Sugar: Adds sweetness to the bar.",
+        "Palm Oil: Contributes to texture and shelf stability.",
+        "Lactose: Milk-derived sugar.",
+        "Egg Whites: Used to stabilize the nougat.",
+        "Salt: Enhances flavor.",
+        "Artificial Flavors: Used for consistency in taste."
+      ],
+      "rating": {
+        "Nutritional Value": "5/10",
+        "Health Impact": "4/10",
+        "Taste": "9/10",
+        "Ingredients Transparency": "6/10"
+      },
+      "overall_rating": "3.8/5"
+    },
+
+    "7622202026645": { 
+      "name": "Bournvita 14.4 g",
+      "img_path": "./assert/bournvita.png",
+      "summary": "Bournvita is a malted chocolate drink mix designed to provide energy and nutrition. It contains essential vitamins and minerals, but also has added sugars and flavoring agents, which may not be suitable for frequent consumption in large quantities.",
+      "ingredients": [
+        "Malt Extract: Provides carbohydrates and flavor.",
+        "Sugar: Adds sweetness to the drink mix.",
+        "Cocoa Solids: Gives the chocolate flavor.",
+        "Liquid Glucose: Acts as a sweetener and texture enhancer.",
+        "Wheat Flour: Adds bulk and texture.",
+        "Barley Extract: Provides nutrients and flavor.",
+        "Milk Solids: Contributes to the creamy texture.",
+        "Vitamins and Minerals: Includes iron, zinc, and vitamin D to support growth.",
+        "Artificial Flavors: Enhances consistency in taste."
+      ],
+      "rating": {
+        "Nutritional Value": "7/10",
+        "Health Impact": "6/10",
+        "Taste": "8/10",
+        "Ingredients Transparency": "5/10"
+      },
+      "overall_rating": "4.0/5"
+    }
+
+  }
+  

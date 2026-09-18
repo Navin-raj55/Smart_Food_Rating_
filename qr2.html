@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode Scanner Integration</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <style>
+        #barcode-scanner {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+        .scanner-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+        #error-message {
+            color: red;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="scanner-container">
+    <h1>Scan a Barcode</h1>
+    <video id="barcode-scanner" autoplay></video>
+    <div id="result">Scan a barcode to see the result here...</div>
+    <div id="error-message"></div>
+</div>
+
+<script>
+    function startScanner() {
+        Quagga.init({
+            inputStream: {
+                name: "Live",
+                type: "LiveStream",
+                target: document.querySelector('#barcode-scanner'), // The video element
+                constraints: {
+                    facingMode: "environment" // Use the back camera
+                }
+            },
+            decoder: {
+                readers: ["code_128_reader", "ean_reader", "upc_reader", "code_39_reader"] // Add readers based on barcode type
+            }
+        }, function (err) {
+            if (err) {
+                console.error(err);
+                document.getElementById('error-message').innerText = "Error initializing camera: " + err.message;
+                return;
+            }
+            console.log("Barcode scanner initialized.");
+            Quagga.start(); // Start the scanner
+        });
+
+        Quagga.onDetected(function (data) {
+            const barcode = data.codeResult.code;
+            console.log('Barcode detected:', barcode);
+            document.getElementById('result').innerText = `Barcode detected: ${barcode}`;
+            fetchRelatedPage(barcode);
+        });
+    }
+
+    // Check for camera access issues
+    function checkCameraSupport() {
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+                .then(function(stream) {
+                    const videoElement = document.querySelector('#barcode-scanner');
+                    if ('srcObject' in videoElement) {
+                        videoElement.srcObject = stream; // Set the stream for the video element
+                    } else {
+                        videoElement.src = window.URL.createObjectURL(stream); // Fallback for older browsers
+                    }
+                    startScanner(); // Start the scanner after permission is granted
+                })
+                .catch(function(err) {
+                    console.error("Camera error:", err);
+                    document.getElementById('error-message').innerText = "Camera access denied or not available.";
+                });
+        } else {
+            document.getElementById('error-message').innerText = "Your browser does not support camera access.";
+        }
+    }
+
+    // Redirect to a related page based on the barcode
+    function fetchRelatedPage(barcode) {
+        const url = `maggi.html?id=${barcode}`; // URL pattern (adjust based on your application)
+        window.location.href = url; // Redirect to the product page
+    }
+
+    // Check if the camera is supported and ask for permission
+    checkCameraSupport();
+</script>
+
+</body>
+</html>
